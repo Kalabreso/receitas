@@ -8,37 +8,40 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class LoginUsuario {
-    
+public class CadastroUsuario {
+
+    @FXML
+    private TextField tfNome;
     @FXML
     private TextField tfEmail;
     @FXML
     private TextField tfSenha;
 
     @FXML
-    private Button btLogar;
+    private Button btCadastrar;
     @FXML
     private Button btLimpar;
 
     @FXML
-    private Label labelTelaCadastro;
+    private Label labelTelaLogin;
 
     public void initialize(){
-        labelTelaCadastro.setOnMouseClicked(event ->{
+        labelTelaLogin.setOnMouseClicked(event -> {
             try {
-                App.setRoot("cadastro-usuario");
+                App.setRoot("login-usuario");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
     }
-
+    
     @FXML
-    private void logar(){
+    private void cadastrar(){
     }
 
     @FXML
     private void limpar(){
+        tfNome.clear();
         tfEmail.clear();
         tfSenha.clear();
     }
