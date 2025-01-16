@@ -11,7 +11,7 @@ public class FabricaDeConexoes {
 
     private static String URL_DB = dotenv.get("URL_DB");
     private static String DB_NAME = dotenv.get("DB_NAME");
-    private static String USERNAME = dotenv.get("USERNAME");
+    private static String USERNAME = dotenv.get("USER");
     private static String PASSWORD = dotenv.get("PASSWORD");
 
     private static String DB_URL = "jdbc:mysql://" + URL_DB + "/" + DB_NAME;
