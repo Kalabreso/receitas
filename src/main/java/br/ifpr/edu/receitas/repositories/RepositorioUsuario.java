@@ -24,4 +24,12 @@ public class RepositorioUsuario {
         }
 
     }
+
+    public Usuario logarUsuario(String email, String senha) {
+        try {
+            return usuarioDAO.buscarUsuario(email, senha);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar Usuário no banco!", e);
+        }
+    }
 }

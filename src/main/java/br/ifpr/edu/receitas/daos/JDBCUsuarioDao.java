@@ -2,6 +2,7 @@ package br.ifpr.edu.receitas.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -48,5 +49,33 @@ public class JDBCUsuarioDao implements UsuarioDAO{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'remover'");
     }
+
+    @Override
+    public Usuario buscarUsuario(String email, String senha) throws SQLException {
+        Connection conn = FabricaDeConexoes.getConnection();
+
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ? AND ativo = 1";
+        
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, email);
+        pstmt.setString(2, senha);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int usuarioId = rs.getInt("id");
+            String usuarioNome = rs.getString("nome");
+            String usuarioEmail = rs.getString("email");
+            String usuarioSenha = rs.getString("senha");
+
+            return new Usuario(usuarioId, usuarioNome, usuarioEmail, usuarioSenha);          
+        } else {
+            return null;
+        }
+
+    }
+
+
     
 }
