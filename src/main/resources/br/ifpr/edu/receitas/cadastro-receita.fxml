@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="800" prefWidth="400"
+      xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="br.ifpr.edu.receitas.screens.CadastroReceita"
+      spacing="5.0"
+    >
+    <padding>
+        <Insets topRightBottomLeft="8.0" />
+    </padding>
+
+    <Label text="Nome da Receita:" labelFor="$tfNome"/>
+    <TextField fx:id="tfNome"/>
+
+    <Label text="Descrição:" labelFor="$tfDescricao"/>
+    <TextField fx:id="tfDescricao"/>
+
+    <HBox alignment="CENTER_RIGHT" spacing="5.0">
+        <Button text="Cadastrar" fx:id="btCadastrar" onAction="#cadastrar"/>
+        <Button text="Limpar" fx:id="btLimpar" onAction="#limpar"/>
+    </HBox>
+</VBox>
