@@ -20,6 +20,9 @@
     <Label text="Nome da Receita:" labelFor="$tfNome"/>
     <TextField fx:id="tfNome"/>
 
+    <Label text="Ingredientes:" labelFor="$tfIngredientes"/>
+    <TextField fx:id="tfIngredientes"/>
+
     <Label text="Descrição:" labelFor="$tfDescricao"/>
     <TextField fx:id="tfDescricao"/>
 

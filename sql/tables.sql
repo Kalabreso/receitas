@@ -11,6 +11,7 @@ create table usuario (
 create table receita (
     id int not null auto_increment,
     nome varchar(255) not null,
+    ingredientes text not null,
     descricao text not null,
     ativo boolean not null default 1,
     usuario_id int not null,
