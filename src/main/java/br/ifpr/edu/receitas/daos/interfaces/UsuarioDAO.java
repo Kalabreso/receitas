@@ -11,4 +11,5 @@ public interface UsuarioDAO {
     boolean atualizar(Usuario usuario) throws SQLException;
     boolean remover(Usuario usuario) throws SQLException;
     Usuario buscarUsuario(String email, String senha) throws SQLException;
+    Usuario buscarUsuarioId(int idUsuario) throws SQLException;
 }

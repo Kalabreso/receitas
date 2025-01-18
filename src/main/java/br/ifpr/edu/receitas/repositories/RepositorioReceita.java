@@ -1,6 +1,7 @@
 package br.ifpr.edu.receitas.repositories;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.ifpr.edu.receitas.daos.JDBCReceitaDAO;
 import br.ifpr.edu.receitas.daos.interfaces.ReceitaDAO;
@@ -22,6 +23,14 @@ public class RepositorioReceita {
             return receitaDAO.cadastrar(receita);
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao cadastrar Receita no banco!", e);
+        }
+    }
+
+    public ArrayList<Receita> listarReceitas(){
+        try {
+            return receitaDAO.listar();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar Receitas no banco!", e);
         }
     }
 }

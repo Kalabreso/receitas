@@ -53,6 +53,7 @@ public class JDBCUsuarioDao implements UsuarioDAO{
     @Override
     public Usuario buscarUsuario(String email, String senha) throws SQLException {
         Connection conn = FabricaDeConexoes.getConnection();
+        Usuario usuario = null;
 
         String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ? AND ativo = 1";
         
@@ -69,13 +70,42 @@ public class JDBCUsuarioDao implements UsuarioDAO{
             String usuarioEmail = rs.getString("email");
             String usuarioSenha = rs.getString("senha");
 
-            return new Usuario(usuarioId, usuarioNome, usuarioEmail, usuarioSenha);          
-        } else {
-            return null;
+            usuario = new Usuario(usuarioId, usuarioNome, usuarioEmail, usuarioSenha);          
         }
 
+        conn.close();
+        pstmt.close();
+        rs.close();
+
+        return usuario;
     }
 
+    @Override
+    public Usuario buscarUsuarioId(int idUsuario) throws SQLException {
+        Connection conn = FabricaDeConexoes.getConnection();
+        Usuario usuario = null;
 
-    
+        String sql = "SELECT * FROM usuario WHERE id = ?";
+        
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setInt(1, idUsuario);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            int usuarioId = rs.getInt("id");
+            String usuarioNome = rs.getString("nome");
+            String usuarioEmail = rs.getString("email");
+            String usuarioSenha = rs.getString("senha");
+
+            usuario = new Usuario(usuarioId, usuarioNome, usuarioEmail, usuarioSenha);          
+        }
+
+        conn.close();
+        pstmt.close();
+        rs.close();
+
+        return usuario;
+    }
 }

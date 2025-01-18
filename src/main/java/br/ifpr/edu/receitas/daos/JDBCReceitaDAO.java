@@ -2,11 +2,14 @@ package br.ifpr.edu.receitas.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.ifpr.edu.receitas.daos.interfaces.ReceitaDAO;
 import br.ifpr.edu.receitas.models.Receita;
+import br.ifpr.edu.receitas.models.Usuario;
+import br.ifpr.edu.receitas.repositories.RepositorioUsuario;
 import br.ifpr.edu.receitas.utils.FabricaDeConexoes;
 
 public class JDBCReceitaDAO implements ReceitaDAO{
@@ -34,8 +37,32 @@ public class JDBCReceitaDAO implements ReceitaDAO{
 
     @Override
     public ArrayList<Receita> listar() throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listar'");
+        Connection conn = FabricaDeConexoes.getConnection();
+        RepositorioUsuario repositorioUsuario = new RepositorioUsuario();
+        ArrayList<Receita> receitas = new ArrayList<>();
+
+        String sql = "SELECT * FROM receita WHERE ativo = 1";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        ResultSet rs = pstmt.executeQuery();
+
+        while(rs.next()) {
+            int id = rs.getInt( "id");
+            String nome = rs.getString("nome");
+            String ingredientes = rs.getString("ingredientes");
+            String descricao = rs.getString("descricao");
+            Usuario usuario = repositorioUsuario.buscarUsuarioPorId(rs.getInt("usuario_id"));
+
+            Receita r = new Receita(id, nome, ingredientes, descricao, usuario);
+            receitas.add(r);
+        }
+
+        rs.close();
+        pstmt.close();
+        conn.close();
+
+        return receitas;
     }
 
     @Override

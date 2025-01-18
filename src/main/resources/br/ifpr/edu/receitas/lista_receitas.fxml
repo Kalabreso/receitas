@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="br.ifpr.edu.receitas.screens.ListaReceitas"
+      fx:id="rootPane"
+      Hgap="5.0"
+      Vgap="5.0"
+    >
+    <padding>
+        <Insets topRightBottomLeft="8.0" />
+    </padding>
+</FlowPane>

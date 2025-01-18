@@ -23,7 +23,8 @@ public class Home {
     }
 
     @FXML
-    private void listarReceitas(){
-        System.out.println("Listar Receitas clicado!!");
+    private void listarReceitas() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("lista_receitas"));
     }
 }

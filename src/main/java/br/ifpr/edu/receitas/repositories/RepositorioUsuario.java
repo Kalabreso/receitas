@@ -32,4 +32,12 @@ public class RepositorioUsuario {
             throw new RuntimeException("Erro ao buscar Usuário no banco!", e);
         }
     }
+
+    public Usuario buscarUsuarioPorId(int usuarioId) {
+        try {
+            return usuarioDAO.buscarUsuarioId(usuarioId);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar Usuário no banco!", e);
+        }
+    }
 }
