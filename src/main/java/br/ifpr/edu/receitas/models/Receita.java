@@ -55,4 +55,8 @@ public class Receita {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public String toString(){
+        return nome;
+    }
 }

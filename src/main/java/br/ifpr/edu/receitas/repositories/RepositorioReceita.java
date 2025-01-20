@@ -33,4 +33,28 @@ public class RepositorioReceita {
             throw new RuntimeException("Erro ao listar Receitas no banco!", e);
         }
     }
+
+    public boolean atualizarReceita(Receita receita){
+        try {
+            return receitaDAO.atualizar(receita);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar Receita no banco!", e);
+        }
+    }
+
+    public boolean removerReceita(Receita receita){
+        try {
+            return receitaDAO.remover(receita);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao remover Receita no banco!", e);
+        }
+    }
+
+    public ArrayList<Receita> listarReceitasUsuario(){
+        try {
+            return receitaDAO.listarReceitasUsuario();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao listar Receitas do usuário no banco!", e);
+        }
+    }
 }

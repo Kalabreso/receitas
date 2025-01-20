@@ -10,4 +10,5 @@ public interface ReceitaDAO {
     ArrayList<Receita> listar() throws SQLException;
     boolean atualizar(Receita receita) throws SQLException;
     boolean remover(Receita receita) throws SQLException;
+    ArrayList<Receita> listarReceitasUsuario() throws SQLException;
 }
