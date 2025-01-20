@@ -1,0 +1,18 @@
+Relatório referente à semana passada (dia 14/01 até o dia 18).
+
+ - Foram criadas duas classes de modelos, o Usuário contendo como atributos: id, nome, email e senha.
+E também a Receita, tendo como atributos: id, nome, ingredientes, descrição e usuário.
+ - Foi criada e implementada a tela de login, aonde o usuário vai digitar seu e-mail e senha, a aplicação
+vai fazer uma busca no banco de dados, caso o usuário for encontrado e der tudo certo, a interface vai ser
+redirecionada para a home, caso o contrário, vai surgir um pop-up dizendo que o usuário não foi encontrado.
+ - Foi criada e implementada a tela de cadastrado, aonde o usuário vai ter que digitar seus dados (nome, email e senha)
+e então será cadastrado no banco, podendo então realizar o seu login.
+ - Criamos um arquivo chamado gitignore, para ignorar o commit no github de arquivos ou pastas sigilosas do projeto.
+ - Foram adicionadas duas dependências no pom.xml, o mysql connector e a do dotenv, para que a aplicação possa se conectar 
+com o banco e puxar os dados do arquivo .env adicionado na raiz.
+ - Foi criada a fábrica de conexões, responsável por fazer com que a aplicação se conecte com o banco mysql.
+ - Foi criada e implementada a tela de cadastro da receita, aonde o usuário vai poder digitar os dados da receita
+(nome, ingredientes e descrição) e salvá-la no banco de dados. Como o usuário está logado, a aplicação vai ser
+responsável por pegar os dados desse usuário e salvar junto com a receita.
+ - Foi criada e implementada a tela da lista das receitas, ela vai ser responsável por mostrar todas as receitas
+salvas no banco e identificar de quem é o dono (usuário) delas, mostrando seu nome e email.
