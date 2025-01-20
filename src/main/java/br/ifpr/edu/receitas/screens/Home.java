@@ -18,8 +18,9 @@ public class Home {
     }
 
     @FXML
-    private void editarReceita(){
-        System.out.println("Editar Receitas clicado!!");
+    private void editarRemoverReceita() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("editar-remover-receita"));
     }
 
     @FXML

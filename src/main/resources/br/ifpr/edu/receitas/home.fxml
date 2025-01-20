@@ -14,7 +14,7 @@
                 <Insets topRightBottomLeft="8.0"/>
             </padding>
             <Button text="Cadastrar Receita" onAction="#cadastrarReceita"/>
-            <Button text="Editar Receita" onAction="#editarReceita"/>
+            <Button text="Editar e Remover Receita" onAction="#editarRemoverReceita"/>
             <Button text="Listar Receitas" onAction="#listarReceitas"/>
         </VBox>
    </left>
