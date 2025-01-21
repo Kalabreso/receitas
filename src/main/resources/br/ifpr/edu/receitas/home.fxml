@@ -22,4 +22,12 @@
    <center>
       <StackPane fx:id="painelCentral"/>
    </center>
+
+   <bottom>
+      <VBox alignment="BOTTOM_LEFT" spacing="5.0">
+            <padding><Insets topRightBottomLeft="8.0"/></padding>
+            <Button text="Editar Usuário" onAction="#editarUsuario"/>
+            <Button text="Remover Usuário" onAction="#removerUsuario"/>
+      </VBox>
+   </bottom>
 </BorderPane>

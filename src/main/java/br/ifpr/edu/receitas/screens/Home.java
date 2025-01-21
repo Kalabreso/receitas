@@ -28,4 +28,14 @@ public class Home {
         painelCentral.getChildren().clear();
         painelCentral.getChildren().add(App.loadFXML("lista_receitas"));
     }
+
+    @FXML
+    private void editarUsuario() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("editar-usuario"));
+    }
+
+    @FXML
+    private void removerUsuario(){
+    }
 }
