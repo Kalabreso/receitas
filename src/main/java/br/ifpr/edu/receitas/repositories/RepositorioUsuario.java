@@ -25,6 +25,14 @@ public class RepositorioUsuario {
 
     }
 
+    public boolean atualizarUsuario(Usuario usuario){
+        try {
+            return usuarioDAO.atualizar(usuario);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar Usuário no banco!", e);
+        }
+    }
+
     public Usuario logarUsuario(String email, String senha) {
         try {
             return usuarioDAO.buscarUsuario(email, senha);

@@ -40,8 +40,23 @@ public class JDBCUsuarioDao implements UsuarioDAO{
 
     @Override
     public boolean atualizar(Usuario usuario) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        Connection conn = FabricaDeConexoes.getConnection();
+
+        String sql = "UPDATE usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, usuario.getNome());
+        pstmt.setString(2, usuario.getEmail());
+        pstmt.setString(3, usuario.getSenha());
+        pstmt.setInt(4, usuario.getId());
+
+        boolean flag = pstmt.executeUpdate() == 1;
+
+        pstmt.close();
+        conn.close();
+
+        return flag;
     }
 
     @Override
