@@ -16,3 +16,16 @@ com o banco e puxar os dados do arquivo .env adicionado na raiz.
 responsável por pegar os dados desse usuário e salvar junto com a receita.
  - Foi criada e implementada a tela da lista das receitas, ela vai ser responsável por mostrar todas as receitas
 salvas no banco e identificar de quem é o dono (usuário) delas, mostrando seu nome e email.
+
+Relatório referente dessa semana.
+
+ - Foi criada e implementada a tela de editar e remover receita, nela vai ter um comboBox com as receitas do usuário
+logado, ao selecionar a receita, os textField do nome, ingredientes e descrição vai ser preenchido com os dados da 
+mesma para então edita-lás e em baixo disso vai ter duas opções de botões: atualizar a receita selecionada com os
+novos dados ou então remove-lá.
+ - Foi criada e implementada a tela de editar o usuário logado, quando o usuário clicar nesse botão, uma nova tela vai 
+se abrir com os dados dele preenchido nos textField (nome, email e senha) para poder editar e enviar essa ação para o
+banco de dados.
+ - Foi criado um botão na home de remover usuário e implementada, quando ele clicar nessa opção o usuário vai ser
+removido do banco de dados e redirencionado para a tela de login para se conectar na aplicação, como o usuário dele
+antigo foi removido, terá que se conectar com uma nova conta.
