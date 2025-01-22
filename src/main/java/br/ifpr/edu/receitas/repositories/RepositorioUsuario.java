@@ -33,6 +33,14 @@ public class RepositorioUsuario {
         }
     }
 
+    public boolean removerUsuario(Usuario usuario){
+        try {
+            return usuarioDAO.remover(usuario);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao remover Usuário no banco!", e);
+        }
+    }
+
     public Usuario logarUsuario(String email, String senha) {
         try {
             return usuarioDAO.buscarUsuario(email, senha);

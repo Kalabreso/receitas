@@ -61,8 +61,20 @@ public class JDBCUsuarioDao implements UsuarioDAO{
 
     @Override
     public boolean remover(Usuario usuario) throws SQLException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remover'");
+        Connection conn = FabricaDeConexoes.getConnection();
+
+        String sql = "UPDATE usuario SET ativo = 0 WHERE id = ?";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setInt(1, usuario.getId());
+
+        boolean flag = pstmt.executeUpdate() == 1;
+
+        pstmt.close();
+        conn.close();
+
+        return flag;
     }
 
     @Override
