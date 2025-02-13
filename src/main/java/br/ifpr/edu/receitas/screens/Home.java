@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Optional;
 
 import br.ifpr.edu.receitas.App;
-import br.ifpr.edu.receitas.models.Usuario;
 import br.ifpr.edu.receitas.repositories.RepositorioUsuario;
 import br.ifpr.edu.receitas.utils.VariavelGlobalUsuario;
 import javafx.fxml.FXML;
@@ -40,6 +39,24 @@ public class Home {
     private void editarUsuario() throws IOException{
         painelCentral.getChildren().clear();
         painelCentral.getChildren().add(App.loadFXML("editar-usuario"));
+    }
+
+    @FXML
+    private void cadastrarIngrediente() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("cadastro-ingrediente"));
+    }
+
+    @FXML
+    private void cadastrarIngredienteReceita() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("cadastro-ingrediente-receita"));
+    }
+
+    @FXML
+    private void editarRemoverIngrediente() throws IOException{
+        painelCentral.getChildren().clear();
+        painelCentral.getChildren().add(App.loadFXML("editar-remover-ingrediente"));
     }
 
     @FXML

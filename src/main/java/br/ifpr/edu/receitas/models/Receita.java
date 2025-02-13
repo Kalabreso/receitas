@@ -1,14 +1,16 @@
 package br.ifpr.edu.receitas.models;
 
+import java.util.ArrayList;
+
 public class Receita {
     
     private int id;
     private String nome;
-    private String ingredientes;
+    private ArrayList<Ingrediente> ingredientes;
     private String descricao;
     private Usuario usuario;
 
-    public Receita(int id, String nome, String ingredientes, String descricao, Usuario usuario) {
+    public Receita(int id, String nome, ArrayList<Ingrediente> ingredientes, String descricao, Usuario usuario) {
         this.id = id;
         this.nome = nome;
         this.ingredientes = ingredientes;
@@ -32,11 +34,11 @@ public class Receita {
         this.nome = nome;
     }
 
-    public String getIngredientes() {
+    public ArrayList<Ingrediente> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(String ingredientes) {
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

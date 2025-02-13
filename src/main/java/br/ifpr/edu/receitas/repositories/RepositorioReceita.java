@@ -16,8 +16,8 @@ public class RepositorioReceita {
         this.receitaDAO = new JDBCReceitaDAO();
     }
 
-    public boolean cadastrarReceita(String nome, String ingredientes, String descricao, Usuario usuario){
-        Receita receita = new Receita(0, nome, ingredientes, descricao, usuario);
+    public boolean cadastrarReceita(String nome, String descricao, Usuario usuario){
+        Receita receita = new Receita(0, nome, new ArrayList<>(), descricao, usuario);
 
         try {
             return receitaDAO.cadastrar(receita);

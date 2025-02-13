@@ -2,6 +2,7 @@ package br.ifpr.edu.receitas.screens;
 
 import java.util.ArrayList;
 
+import br.ifpr.edu.receitas.models.Ingrediente;
 import br.ifpr.edu.receitas.models.Receita;
 import br.ifpr.edu.receitas.repositories.RepositorioReceita;
 import javafx.fxml.FXML;
@@ -46,10 +47,20 @@ public class ListaReceitas {
             receita.getNome() +
             "\n\n" +
             "INGREDIENTES:\n" +
-            receita.getIngredientes() +
-            "\n\n" +
+            stringIngredientes(receita.getIngredientes()) +
+            "\n" +
             "DESCRIÇÃO:\n" +
             receita.getDescricao()
         ;
+    }
+
+    String stringIngredientes(ArrayList<Ingrediente> ingredientes){
+        String msg = "";
+
+        for(Ingrediente i : ingredientes){
+            msg += i.getQuantidade() + " " + i.getMedida() + " de " + i.getNome() + "\n";
+        }
+
+        return msg;
     }
 }

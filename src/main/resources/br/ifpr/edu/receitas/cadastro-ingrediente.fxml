@@ -10,18 +10,15 @@
 <VBox prefHeight="800" prefWidth="400"
       xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="br.ifpr.edu.receitas.screens.CadastroReceita"
+      fx:controller="br.ifpr.edu.receitas.screens.CadastroIngrediente"
       spacing="5.0"
     >
     <padding>
         <Insets topRightBottomLeft="8.0" />
     </padding>
 
-    <Label text="Nome da Receita:" labelFor="$tfNome"/>
-    <TextField fx:id="tfNome"/>
-
-    <Label text="Descrição:" labelFor="$tfDescricao"/>
-    <TextField fx:id="tfDescricao"/>
+    <Label text="Nome do Ingrediente:" labelFor="$tfIngrediente"/>
+    <TextField fx:id="tfIngrediente"/>
 
     <HBox alignment="CENTER_RIGHT" spacing="5.0">
         <Button text="Cadastrar" fx:id="btCadastrar" onAction="#cadastrar"/>

@@ -15,8 +15,6 @@ public class CadastroReceita {
     private TextField tfNome;
     @FXML
     private TextField tfDescricao;
-    @FXML
-    private TextField tfIngredientes;
 
     @FXML
     private Button btCadastrar;
@@ -28,7 +26,6 @@ public class CadastroReceita {
     @FXML
     private void cadastrar(){
         String nome = tfNome.getText();
-        String ingredientes = tfIngredientes.getText();
         String descricao = tfDescricao.getText();
         Usuario usuario = VariavelGlobalUsuario.getUsuario();
 
@@ -39,17 +36,13 @@ public class CadastroReceita {
             deuCerto = false;
             msg += "Nome não pode estar vazio!!";
         }
-        if(ingredientes.isEmpty() || ingredientes.isBlank()){
-            deuCerto = false;
-            msg += "\nIngredientes não pode estar vazio!!";
-        }
         if(descricao.isEmpty() || descricao.isBlank()){
             deuCerto = false;
             msg += "\nDescrição não pode estar vazio!!";
         }
         
         if(deuCerto){
-            if(repositorioReceita.cadastrarReceita(nome, ingredientes, descricao, usuario)){
+            if(repositorioReceita.cadastrarReceita(nome, descricao, usuario)){
                 msg = "Receita cadastrada com sucesso!";
                 limpar();
             } else {
@@ -65,7 +58,6 @@ public class CadastroReceita {
     @FXML
     private void limpar(){
         tfNome.clear();
-        tfIngredientes.clear();
         tfDescricao.clear();
     }
 }

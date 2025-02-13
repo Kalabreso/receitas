@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.ifpr.edu.receitas.daos.interfaces.ReceitaDAO;
+import br.ifpr.edu.receitas.models.Ingrediente;
 import br.ifpr.edu.receitas.models.Receita;
 import br.ifpr.edu.receitas.models.Usuario;
+import br.ifpr.edu.receitas.repositories.RepositorioIngrediente;
 import br.ifpr.edu.receitas.repositories.RepositorioUsuario;
 import br.ifpr.edu.receitas.utils.FabricaDeConexoes;
 import br.ifpr.edu.receitas.utils.VariavelGlobalUsuario;
@@ -19,14 +21,13 @@ public class JDBCReceitaDAO implements ReceitaDAO{
     public boolean cadastrar(Receita receita) throws SQLException {
         Connection conn = FabricaDeConexoes.getConnection();
 
-        String sql = "INSERT INTO receita(nome, ingredientes, descricao, usuario_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO receita(nome, descricao, usuario_id) VALUES (?, ?, ?)";
         
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         pstmt.setString(1, receita.getNome());
-        pstmt.setString(2, receita.getIngredientes());
-        pstmt.setString(3, receita.getDescricao());
-        pstmt.setInt(4, receita.getUsuario().getId());
+        pstmt.setString(2, receita.getDescricao());
+        pstmt.setInt(3, receita.getUsuario().getId());
 
         int flag = pstmt.executeUpdate();
 
@@ -40,6 +41,7 @@ public class JDBCReceitaDAO implements ReceitaDAO{
     public ArrayList<Receita> listar() throws SQLException {
         Connection conn = FabricaDeConexoes.getConnection();
         RepositorioUsuario repositorioUsuario = new RepositorioUsuario();
+        RepositorioIngrediente repositorioIngrediente = new RepositorioIngrediente();
         ArrayList<Receita> receitas = new ArrayList<>();
 
         String sql = "SELECT * FROM receita WHERE ativo = 1";
@@ -51,9 +53,10 @@ public class JDBCReceitaDAO implements ReceitaDAO{
         while(rs.next()) {
             int id = rs.getInt( "id");
             String nome = rs.getString("nome");
-            String ingredientes = rs.getString("ingredientes");
             String descricao = rs.getString("descricao");
             Usuario usuario = repositorioUsuario.buscarUsuarioPorId(rs.getInt("usuario_id"));
+            
+            ArrayList<Ingrediente> ingredientes = repositorioIngrediente.retornarIngredientesReceita(id);
 
             Receita r = new Receita(id, nome, ingredientes, descricao, usuario);
             receitas.add(r);
@@ -70,14 +73,13 @@ public class JDBCReceitaDAO implements ReceitaDAO{
     public boolean atualizar(Receita receita) throws SQLException {
         Connection conn = FabricaDeConexoes.getConnection();
 
-        String sql = "UPDATE receita SET nome = ?, ingredientes = ?, descricao = ? WHERE id = ?";
+        String sql = "UPDATE receita SET nome = ?, descricao = ? WHERE id = ?";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
         pstmt.setString(1, receita.getNome());
-        pstmt.setString(2, receita.getIngredientes());
-        pstmt.setString(3, receita.getDescricao());
-        pstmt.setInt(4, receita.getId());
+        pstmt.setString(2, receita.getDescricao());
+        pstmt.setInt(3, receita.getId());
 
         boolean flag = pstmt.executeUpdate() == 1;
 
@@ -110,6 +112,7 @@ public class JDBCReceitaDAO implements ReceitaDAO{
         Connection conn = FabricaDeConexoes.getConnection();
         ArrayList<Receita> receitas = new ArrayList<>();
         Usuario u = VariavelGlobalUsuario.getUsuario();
+        RepositorioIngrediente repositorioIngrediente = new RepositorioIngrediente();
 
         String sql = "SELECT * FROM receita WHERE usuario_id = ? AND ativo = 1";
 
@@ -122,9 +125,10 @@ public class JDBCReceitaDAO implements ReceitaDAO{
         while(rs.next()) {
             int id = rs.getInt( "id");
             String nome = rs.getString("nome");
-            String ingredientes = rs.getString("ingredientes");
             String descricao = rs.getString("descricao");
             Usuario usuario = u;
+
+            ArrayList<Ingrediente> ingredientes = repositorioIngrediente.retornarIngredientesReceita(id);
 
             Receita r = new Receita(id, nome, ingredientes, descricao, usuario);
             receitas.add(r);

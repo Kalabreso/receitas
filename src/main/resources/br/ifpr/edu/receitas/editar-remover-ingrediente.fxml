@@ -10,21 +10,24 @@
 <VBox prefHeight="800" prefWidth="400"
       xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml/1" 
-      fx:controller="br.ifpr.edu.receitas.screens.EditarRemoverReceita"
+      fx:controller="br.ifpr.edu.receitas.screens.EditarRemoverIngrediente"
       spacing="5.0"
     >
     <padding>
         <Insets topRightBottomLeft="8.0" />
     </padding>
 
-    <Label text="Selecione uma receita para editá-la ou removê-la:"/>
+    <Label text="Selecione uma receita:"/>
     <ComboBox fx:id="cbReceitas"/>
 
-    <Label text="Nome da Receita:" labelFor="$tfNome"/>
-    <TextField fx:id="tfNome" disable="true"/>
+    <Label text="Selecione um ingrediente dessa receita para editar ou excluir:"/>
+    <ComboBox fx:id="cbIngredientes" disable="true"/>
 
-    <Label text="Descrição:" labelFor="$tfDescricao"/>
-    <TextField fx:id="tfDescricao" disable="true"/>
+    <Label text="Medida:" labelFor="$tfMedida"/>
+    <TextField fx:id="tfMedida" disable="true"/>
+
+    <Label text="Quantidade:" labelFor="$tfQuantidade"/>
+    <TextField fx:id="tfQuantidade" disable="true"/>
 
     <HBox alignment="CENTER_RIGHT" spacing="5.0">
         <Button text="Editar" fx:id="btEditar" onAction="#editar"/>

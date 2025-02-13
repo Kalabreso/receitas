@@ -16,6 +16,9 @@
             <Button text="Cadastrar Receita" onAction="#cadastrarReceita"/>
             <Button text="Editar e Remover Receita" onAction="#editarRemoverReceita"/>
             <Button text="Listar Receitas" onAction="#listarReceitas"/>
+            <Button text="Cadastrar Ingrediente" onAction="#cadastrarIngrediente"/>
+            <Button text="Cadastrar Ingrediente na Receita" onAction="#cadastrarIngredienteReceita"/>
+            <Button text="Editar e Remover Ingrediente" onAction="#editarRemoverIngrediente"/>
         </VBox>
    </left>
 
